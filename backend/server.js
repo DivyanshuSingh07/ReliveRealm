@@ -3,6 +3,106 @@ require("dotenv").config();
 const express = require("express");
 const cors = require("cors");
 const cookieParser = require("cookie-parser");
+const mongoose = require("mongoose");
+
+const connectDB = require("./config/db");
+const authRoutes = require("./routes/authRoutes");
+const productRoutes = require("./routes/productRoutes");
+
+const app = express();
+
+// -------------------------
+// Global middleware
+// -------------------------
+
+app.use(
+  cors({
+    origin: "http://127.0.0.1:5500",
+    credentials: true,
+  })
+);
+
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+app.use(cookieParser());
+
+// -------------------------
+// Database
+// -------------------------
+
+connectDB();
+
+// -------------------------
+// Routes
+// -------------------------
+
+app.use("/api/auth", authRoutes);
+app.use("/api/products", productRoutes);
+
+// -------------------------
+// Base route
+// -------------------------
+
+app.get("/api", (req, res) => {
+  res.json({
+    success: true,
+    message: "ReliveRealm API is running",
+  });
+});
+
+// -------------------------
+// Health route
+// -------------------------
+
+app.get("/api/health", (req, res) => {
+  const dbState = mongoose.connection.readyState;
+
+  const databaseStatus = dbState === 1 ? "connected" : "disconnected";
+
+  res.json({
+    success: true,
+    api: "running",
+    database: databaseStatus,
+  });
+});
+
+// -------------------------
+// 404 handler
+// -------------------------
+
+app.use((req, res) => {
+  res.status(404).json({
+    success: false,
+    message: "Route not found",
+  });
+});
+
+// -------------------------
+// Global error handler
+// -------------------------
+
+app.use((err, req, res, next) => {
+  console.error(err);
+
+  res.status(err.status || 500).json({
+    success: false,
+    message: err.message || "Internal server error",
+  });
+});
+
+// -------------------------
+// Export app for Vercel
+// -------------------------
+
+module.exports = app;
+
+
+/*
+require("dotenv").config();
+
+const express = require("express");
+const cors = require("cors");
+const cookieParser = require("cookie-parser");
 
 const connectDB = require("./config/db");
 const User = require("./models/User");
@@ -90,6 +190,8 @@ app.use((err, req, res, next) => {
 app.listen(PORT, () => {
   console.log(`ReliveRealm API running on http://localhost:${PORT}`);
 });
+
+*/
 
 /*
 require("dotenv").config();
