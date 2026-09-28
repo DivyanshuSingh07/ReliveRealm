@@ -8,7 +8,7 @@ const generateAccessToken = (userId) => {
     process.env.ACCESS_TOKEN_SECRET,
     {
       expiresIn: "15m",
-    }
+    },
   );
 };
 
@@ -20,7 +20,7 @@ const generateRefreshToken = (userId) => {
     process.env.REFRESH_TOKEN_SECRET,
     {
       expiresIn: "7d",
-    }
+    },
   );
 };
 

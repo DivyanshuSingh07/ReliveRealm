@@ -3,10 +3,7 @@ const jwt = require("jsonwebtoken");
 
 const User = require("../models/User");
 
-const {
-  generateAccessToken,
-  generateRefreshToken,
-} = require("../utils/token");
+const { generateAccessToken, generateRefreshToken } = require("../utils/token");
 
 // -------------------------
 // Register
@@ -115,16 +112,11 @@ const refreshToken = async (req, res, next) => {
     }
 
     // Verify the refresh JWT
-    const decoded = jwt.verify(
-      token,
-      process.env.REFRESH_TOKEN_SECRET
-    );
+    const decoded = jwt.verify(token, process.env.REFRESH_TOKEN_SECRET);
 
     // Find the user and explicitly include
     // the refresh token field.
-    const user = await User.findById(decoded.userId).select(
-      "+refreshToken"
-    );
+    const user = await User.findById(decoded.userId).select("+refreshToken");
 
     if (!user || !user.refreshToken) {
       return res.status(401).json({
@@ -241,165 +233,3 @@ module.exports = {
   logout,
   getMe,
 };
-
-
-/*
-const bcrypt = require("bcryptjs");
-
-const User = require("../models/User");
-
-const {
-  generateAccessToken,
-  generateRefreshToken,
-} = require("../utils/token");
-
-// -------------------------
-// Register
-// -------------------------
-
-const register = async (req, res, next) => {
-  try {
-    const { name, email, password } = req.body;
-
-    const existingUser = await User.findOne({ email });
-
-    if (existingUser) {
-      return res.status(409).json({
-        success: false,
-        message: "An account with this email already exists",
-      });
-    }
-
-    const user = await User.create({
-      name,
-      email,
-      password,
-    });
-
-    return res.status(201).json({
-      success: true,
-      message: "Account created successfully",
-      user: {
-        id: user._id,
-        name: user.name,
-        email: user.email,
-      },
-    });
-  } catch (error) {
-    next(error);
-  }
-};
-
-// -------------------------
-// Login
-// -------------------------
-
-const login = async (req, res, next) => {
-  try {
-    const { email, password } = req.body;
-
-    // Explicitly request the password hash because
-    // the User model excludes it by default.
-    const user = await User.findOne({ email }).select("+password");
-
-    // Use the same generic response for both
-    // non-existent users and incorrect passwords.
-    if (!user) {
-      return res.status(401).json({
-        success: false,
-        message: "Invalid email or password",
-      });
-    }
-
-    const passwordMatches = await bcrypt.compare(password, user.password);
-
-    if (!passwordMatches) {
-      return res.status(401).json({
-        success: false,
-        message: "Invalid email or password",
-      });
-    }
-
-    // Generate JWTs
-    const accessToken = generateAccessToken(user._id);
-    const refreshToken = generateRefreshToken(user._id);
-
-    // Store refresh token for server-side revocation
-    user.refreshToken = refreshToken;
-    await user.save();
-
-    // Send refresh token as httpOnly cookie
-    res.cookie("refreshToken", refreshToken, {
-      httpOnly: true,
-      secure: process.env.NODE_ENV === "production",
-      sameSite: "strict",
-      maxAge: 7 * 24 * 60 * 60 * 1000,
-    });
-
-    // Access token is returned in JSON
-    return res.status(200).json({
-      success: true,
-      message: "Login successful",
-      accessToken,
-      user: {
-        id: user._id,
-        name: user.name,
-        email: user.email,
-      },
-    });
-  } catch (error) {
-    next(error);
-  }
-};
-
-module.exports = {
-  register,
-  login,
-};
-
-*/
-
-/*
-
-const User = require("../models/User");
-
-const register = async (req, res, next) => {
-  try {
-    const { name, email, password } = req.body;
-
-    // Check for an existing user
-    const existingUser = await User.findOne({ email });
-
-    if (existingUser) {
-      return res.status(409).json({
-        success: false,
-        message: "An account with this email already exists",
-      });
-    }
-
-    // Create the user
-    const user = await User.create({
-      name,
-      email,
-      password,
-    });
-
-    // Never return password or refresh token
-    return res.status(201).json({
-      success: true,
-      message: "Account created successfully",
-      user: {
-        id: user._id,
-        name: user.name,
-        email: user.email,
-      },
-    });
-  } catch (error) {
-    next(error);
-  }
-};
-
-module.exports = {
-  register,
-};
-*/

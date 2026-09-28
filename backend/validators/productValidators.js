@@ -1,4 +1,3 @@
-// const { body } = require("express-validator");
 const { body, param } = require("express-validator");
 
 const createProductValidator = [
@@ -53,11 +52,7 @@ const createProductValidator = [
     .trim()
     .notEmpty()
     .withMessage("Product condition is required")
-    .isIn([
-      "A / Excellent",
-      "B / Very good",
-      "C / Good",
-    ])
+    .isIn(["A / Excellent", "B / Very good", "C / Good"])
     .withMessage("Invalid product condition"),
 
   body("type")
@@ -67,10 +62,7 @@ const createProductValidator = [
     .isIn(["Pre-owned", "Refurbished"])
     .withMessage("Product type must be Pre-owned or Refurbished"),
 
-  body("image")
-    .trim()
-    .notEmpty()
-    .withMessage("Product image is required"),
+  body("image").trim().notEmpty().withMessage("Product image is required"),
 
   body("tags")
     .optional()
@@ -136,11 +128,7 @@ const updateProductValidator = [
     .trim()
     .notEmpty()
     .withMessage("Product condition is required")
-    .isIn([
-      "A / Excellent",
-      "B / Very good",
-      "C / Good",
-    ])
+    .isIn(["A / Excellent", "B / Very good", "C / Good"])
     .withMessage("Invalid product condition"),
 
   body("type")
@@ -150,10 +138,7 @@ const updateProductValidator = [
     .isIn(["Pre-owned", "Refurbished"])
     .withMessage("Product type must be Pre-owned or Refurbished"),
 
-  body("image")
-    .trim()
-    .notEmpty()
-    .withMessage("Product image is required"),
+  body("image").trim().notEmpty().withMessage("Product image is required"),
 
   body("tags")
     .optional()
@@ -181,12 +166,3 @@ module.exports = {
   updateProductValidator,
   productIdValidator,
 };
-
-// module.exports = {
-//   createProductValidator,
-//   productIdValidator,
-// };
-
-// module.exports = {
-//   createProductValidator,
-// };

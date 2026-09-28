@@ -1038,7 +1038,6 @@ All write operations communicate with the protected backend API.
 
 ---
 
-
 # Important Security Notes
 
 Never commit:

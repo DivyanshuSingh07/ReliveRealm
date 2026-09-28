@@ -58,11 +58,7 @@ const productSchema = new mongoose.Schema(
       type: String,
       required: [true, "Product condition is required"],
       enum: {
-        values: [
-          "A / Excellent",
-          "B / Very good",
-          "C / Good",
-        ],
+        values: ["A / Excellent", "B / Very good", "C / Good"],
         message: "Invalid product condition",
       },
     },
@@ -89,7 +85,7 @@ const productSchema = new mongoose.Schema(
   },
   {
     timestamps: true,
-  }
+  },
 );
 
 module.exports = mongoose.model("Product", productSchema);
