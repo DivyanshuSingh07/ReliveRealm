@@ -1,0 +1,108 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ReliveRealm — Create account</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+  <body class="auth-page" data-page="register">
+    <div class="site-noise"></div>
+    <header class="site-header auth-header">
+      <a class="wordmark" href="index.html">RELIVE<span>REALM</span></a>
+      <div class="header-actions">
+        <button
+          class="theme-toggle"
+          id="themeToggle"
+          type="button"
+          aria-label="Switch theme"
+        >
+          <span class="theme-icon">☼</span><b>Light</b></button
+        ><a class="text-button" href="login.html">Sign in ↗</a>
+      </div>
+    </header>
+    <main class="auth-layout register-layout">
+      <section class="auth-form-wrap">
+        <p class="eyebrow">Join the realm</p>
+        <h1>Make an<br /><em>account.</em></h1>
+        <p class="auth-lede">
+          Save products you like and keep your collection close.
+        </p>
+        <form id="registerForm" class="form-stack" novalidate>
+          <label
+            >Name<input
+              name="name"
+              type="text"
+              autocomplete="name"
+              required
+              minlength="2"
+              placeholder="Your name"
+          /></label>
+          <label
+            >Email<input
+              name="email"
+              type="email"
+              autocomplete="email"
+              required
+              placeholder="you@example.com"
+          /></label>
+          <label
+            >Password
+            <div class="password-field">
+              <input
+                name="password"
+                type="password"
+                autocomplete="new-password"
+                required
+                minlength="8"
+                placeholder="Minimum 8 characters"
+              /><button type="button" data-password-toggle>Show</button>
+            </div></label
+          >
+          <label
+            >Confirm password<input
+              name="confirmPassword"
+              type="password"
+              autocomplete="new-password"
+              required
+              minlength="8"
+              placeholder="Repeat your password"
+          /></label>
+          <div class="form-error" id="registerError" role="alert"></div>
+          <button class="primary-button full" type="submit">
+            Create account <span>↗</span>
+          </button>
+        </form>
+        <p class="auth-switch">
+          Already registered? <a href="login.html">Sign in</a>
+        </p>
+        <div class="api-note">
+          <span>API READY</span>
+          <p>
+            This maps directly to <code>POST /api/auth/register</code>. The
+            backend must hash the password, reject duplicate email with 409, and
+            never return the password or tokens.
+          </p>
+        </div>
+      </section>
+      <section class="auth-art register-art">
+        <div class="register-stack">
+          <div>F</div>
+          <div>O</div>
+          <div>R</div>
+          <div>M</div>
+          <div>A</div>
+        </div>
+        <p>PRE-OWNED /<br />NOT FORGOTTEN.</p>
+      </section>
+    </main>
+    <div class="toast" id="toast"></div>
+    <script type="module" src="js/auth.js"></script>
+  </body>
+</html>

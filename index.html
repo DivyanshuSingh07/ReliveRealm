@@ -1,0 +1,328 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="ReliveRealm — second-hand and refurbished products, checked and ready for another life."
+    />
+    <title>ReliveRealm — Give good things another life</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+  <body data-page="shop">
+    <div class="site-noise" aria-hidden="true"></div>
+    <div class="page-loader" id="pageLoader">
+      <span>RELIVEREALM</span><i></i>
+    </div>
+
+    <header class="site-header">
+      <a class="wordmark" href="index.html" aria-label="ReliveRealm home"
+        >RELIVE<span>REALM</span></a
+      >
+      <nav class="main-nav" aria-label="Primary navigation">
+        <a class="nav-link active" href="#shop">Shop</a>
+        <a class="nav-link" href="#categories">Categories</a>
+        <a class="nav-link" href="#how-it-works">How it works</a>
+      </nav>
+      <div class="header-actions">
+        <button
+          class="theme-toggle"
+          id="themeToggle"
+          type="button"
+          aria-label="Switch theme"
+        >
+          <span class="theme-icon">☼</span><b>Light</b>
+        </button>
+        <button class="text-button" id="searchToggle">
+          Search <span>/</span>
+        </button>
+        <a class="text-button" href="login.html" id="accountLink">Account</a>
+        <button class="cart-trigger" id="cartTrigger">
+          Bag <b id="cartCount">0</b>
+        </button>
+      </div>
+    </header>
+
+    <main>
+      <section class="hero" id="shop">
+        <div class="hero-copy reveal">
+          <p class="eyebrow">Second-hand / Refurbished / Re-loved</p>
+          <h1>Good things<br />deserve<br /><em>another life.</em></h1>
+          <p class="hero-description">
+            Shop checked second-hand and refurbished products across tech, home,
+            gaming, fashion and everyday essentials — without the new-product
+            price tag.
+          </p>
+          <div class="hero-actions">
+            <a class="circle-link" href="#catalog"
+              ><span>Shop<br />the realm</span><i>↘</i></a
+            ><a class="plain-link" href="#how-it-works">How we check ↗</a>
+          </div>
+        </div>
+        <div class="hero-stage">
+          <div class="hero-card hero-card-main">
+            <span class="condition-tag">A / Excellent</span
+            ><img
+              src="https://images.unsplash.com/photo-1517336714731-489689fd1ca8?auto=format&fit=crop&w=1200&q=85"
+              alt="Refurbished laptop on a desk"
+            />
+          </div>
+          <div class="hero-card hero-card-small">
+            <span>RELISTED</span><strong>MacBook Air</strong
+            ><small>Tested · 2023</small>
+          </div>
+          <div class="hero-sticker">USE<br />AGAIN<br />↻</div>
+          <div class="hero-caption">
+            <span>01 — 12</span><span>Checked / Cleaned / Ready</span>
+          </div>
+        </div>
+        <div class="hero-side-note">BUY<br />LESS<br />WASTE</div>
+      </section>
+
+      <section class="ticker" aria-label="Store philosophy">
+        <div class="ticker-track">
+          <span>PRE-OWNED, NOT PRE-LOVED LESS</span><i>✳</i
+          ><span>TESTED BEFORE LISTING</span><i>✳</i
+          ><span>BETTER VALUE, LONGER LIFE</span><i>✳</i
+          ><span>PRE-OWNED, NOT PRE-LOVED LESS</span><i>✳</i>
+        </div>
+      </section>
+
+      <section class="category-strip" id="categories">
+        <div class="section-heading compact">
+          <div>
+            <p class="eyebrow">Browse by category</p>
+            <h2>Find your next thing.</h2>
+          </div>
+          <p class="section-intro">
+            From everyday electronics to furniture, everything gets a condition
+            label before it reaches the shelf.
+          </p>
+        </div>
+        <div class="category-list">
+          <button data-category="all" class="category-tile active">
+            <span>01</span><strong>All products</strong
+            ><small>Everything in one place</small>
+          </button>
+          <button data-category="electronics" class="category-tile">
+            <span>02</span><strong>Electronics</strong
+            ><small>Phones, tablets & gadgets</small>
+          </button>
+          <button data-category="computers" class="category-tile">
+            <span>03</span><strong>Computers</strong
+            ><small>Laptops & desktops</small>
+          </button>
+          <button data-category="gaming" class="category-tile">
+            <span>04</span><strong>Gaming</strong
+            ><small>Consoles & accessories</small>
+          </button>
+          <button data-category="cameras" class="category-tile">
+            <span>05</span><strong>Cameras</strong
+            ><small>Cameras & lenses</small>
+          </button>
+          <button data-category="home" class="category-tile">
+            <span>06</span><strong>Home & Kitchen</strong
+            ><small>Useful things for home</small>
+          </button>
+          <button data-category="furniture" class="category-tile">
+            <span>07</span><strong>Furniture</strong
+            ><small>Desks, chairs & more</small>
+          </button>
+          <button data-category="fashion" class="category-tile">
+            <span>08</span><strong>Fashion</strong
+            ><small>Clothing & accessories</small>
+          </button>
+          <button data-category="books" class="category-tile">
+            <span>09</span><strong>Books & Media</strong
+            ><small>Books, vinyl & more</small>
+          </button>
+          <button data-category="sports" class="category-tile">
+            <span>10</span><strong>Sports & Fitness</strong
+            ><small>Gear ready to move</small>
+          </button>
+          <button data-category="appliances" class="category-tile">
+            <span>11</span><strong>Appliances</strong
+            ><small>Tested household tech</small>
+          </button>
+          <button data-category="automotive" class="category-tile">
+            <span>12</span><strong>Automotive</strong
+            ><small>Useful vehicle extras</small>
+          </button>
+        </div>
+      </section>
+
+      <section class="catalog-section" id="catalog">
+        <div class="section-heading">
+          <div>
+            <p class="eyebrow">The current shelf</p>
+            <h2>Recently relived</h2>
+          </div>
+          <p class="section-intro">
+            Every listing shows condition, stock and a clear description. No
+            mystery boxes.
+          </p>
+        </div>
+        <div class="shop-toolbar">
+          <div class="filter-group" id="categoryFilters">
+            <button class="filter-chip active" data-category="all">
+              All <span id="countAll">12</span>
+            </button>
+            <button class="filter-chip" data-category="electronics">
+              Electronics</button
+            ><button class="filter-chip" data-category="computers">
+              Computers</button
+            ><button class="filter-chip" data-category="gaming">Gaming</button
+            ><button class="filter-chip" data-category="cameras">Cameras</button
+            ><button class="filter-chip" data-category="home">Home</button
+            ><button class="filter-chip" data-category="furniture">
+              Furniture</button
+            ><button class="filter-chip" data-category="fashion">Fashion</button
+            ><button class="filter-chip" data-category="books">Books</button
+            ><button class="filter-chip" data-category="sports">Sports</button
+            ><button class="filter-chip" data-category="appliances">
+              Appliances</button
+            ><button class="filter-chip" data-category="automotive">
+              Automotive
+            </button>
+          </div>
+          <div class="sort-wrap">
+            <label for="sortProducts">Sort</label
+            ><select id="sortProducts">
+              <option value="featured">Featured</option>
+              <option value="price-low">Price: low → high</option>
+              <option value="price-high">Price: high → low</option>
+              <option value="name">Name: A → Z</option>
+            </select>
+          </div>
+        </div>
+        <div class="applied-filters" id="appliedFilters" hidden></div>
+        <div class="product-grid" id="productGrid" aria-live="polite"></div>
+      </section>
+
+      <section class="how-section" id="how-it-works">
+        <div class="manifesto-index">02 / 03</div>
+        <div class="manifesto-copy">
+          <p class="eyebrow">No guesswork</p>
+          <h2>Second-hand<br />shouldn't mean<br /><em>second-best.</em></h2>
+        </div>
+        <div class="manifesto-body">
+          <p>
+            We give each product a practical condition grade, clean up the
+            listing, and make the useful details easy to find. Refurbished items
+            are checked before they are listed.
+          </p>
+          <div class="steps">
+            <article>
+              <b>01</b>
+              <h3>Check</h3>
+              <p>Core functions are tested before listing.</p>
+            </article>
+            <article>
+              <b>02</b>
+              <h3>Describe</h3>
+              <p>Condition and imperfections are stated clearly.</p>
+            </article>
+            <article>
+              <b>03</b>
+              <h3>Relive</h3>
+              <p>Good products get a second chance with a new owner.</p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="journal" id="journal">
+        <div class="section-heading">
+          <div>
+            <p class="eyebrow">Good to know</p>
+            <h2>The ReliveRealm notes</h2>
+          </div>
+          <span class="mono-label">03 / 03</span>
+        </div>
+        <div class="journal-grid">
+          <article>
+            <span>01 / CONDITION</span>
+            <h3>What does “Grade A” actually mean?</h3>
+            <a href="#">Read note ↗</a>
+          </article>
+          <article>
+            <span>02 / VALUE</span>
+            <h3>Why refurbished tech can be the smarter buy.</h3>
+            <a href="#">Read note ↗</a>
+          </article>
+          <article>
+            <span>03 / CARE</span>
+            <h3>Five small things that make used products last.</h3>
+            <a href="#">Read note ↗</a>
+          </article>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div>
+        <a class="wordmark" href="index.html">RELIVE<span>REALM</span></a>
+        <p>Give good things another life.</p>
+      </div>
+      <div class="footer-links">
+        <a href="#categories">Categories</a><a href="login.html">Account</a
+        ><a href="admin.html">Studio</a>
+      </div>
+      <div>
+        <span>© 2026 RELIVEREALM</span><span>Built for API integration</span>
+      </div>
+    </footer>
+
+    <aside class="cart-drawer" id="cartDrawer" aria-hidden="true">
+      <div class="drawer-head">
+        <div>
+          <span class="eyebrow">Your selection</span>
+          <h2>Bag <span id="drawerCount">0</span></h2>
+        </div>
+        <button class="close-button" id="cartClose" aria-label="Close cart">
+          ×
+        </button>
+      </div>
+      <div class="cart-items" id="cartItems"></div>
+      <div class="cart-empty" id="cartEmpty">
+        <span>∅</span>
+        <p>Your bag is currently empty.</p>
+        <a href="#catalog" id="emptyShop">Browse products</a>
+      </div>
+      <div class="cart-footer" id="cartFooter" hidden>
+        <div><span>Subtotal</span><strong id="cartSubtotal">₹0</strong></div>
+        <button class="primary-button" id="checkoutButton">
+          Continue to checkout <span>↗</span></button
+        ><small
+          >Checkout is a Phase 1 preview. Payment/order APIs are outside the
+          assigned auth + product scope.</small
+        >
+      </div>
+    </aside>
+    <div class="drawer-backdrop" id="drawerBackdrop"></div>
+    <div class="search-panel" id="searchPanel" aria-hidden="true">
+      <div class="search-inner">
+        <span class="eyebrow">Find a product</span
+        ><button class="close-button" id="searchClose">×</button
+        ><label class="search-field"
+          ><span>⌕</span
+          ><input
+            id="searchInput"
+            type="search"
+            placeholder="Search product, category, condition..."
+            autocomplete="off"
+        /></label>
+        <div class="search-results" id="searchResults"></div>
+      </div>
+    </div>
+    <div class="toast" id="toast" role="status"></div>
+    <script type="module" src="js/app.js"></script>
+  </body>
+</html>

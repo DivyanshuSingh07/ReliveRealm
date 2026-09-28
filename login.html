@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ReliveRealm — Sign in</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+  <body class="auth-page" data-page="login">
+    <div class="site-noise"></div>
+    <header class="site-header auth-header">
+      <a class="wordmark" href="index.html">RELIVE<span>REALM</span></a>
+      <div class="header-actions">
+        <button
+          class="theme-toggle"
+          id="themeToggle"
+          type="button"
+          aria-label="Switch theme"
+        >
+          <span class="theme-icon">☼</span><b>Light</b></button
+        ><a class="text-button" href="register.html">Create account ↗</a>
+      </div>
+    </header>
+    <main class="auth-layout">
+      <section class="auth-art">
+        <div class="auth-art-ring"></div>
+        <div class="auth-art-object"><span></span></div>
+        <div class="auth-art-copy">
+          <span>MEMBER / 01</span
+          ><strong>ACCESS<br />THE<br />COLLECTION.</strong>
+        </div>
+      </section>
+      <section class="auth-form-wrap">
+        <p class="eyebrow">Welcome back</p>
+        <h1>Sign in.</h1>
+        <p class="auth-lede">
+          Your saved products, orders and account details live here.
+        </p>
+        <form id="loginForm" class="form-stack" novalidate>
+          <label
+            >Email<input
+              name="email"
+              type="email"
+              autocomplete="email"
+              required
+              placeholder="you@example.com"
+          /></label>
+          <label
+            >Password
+            <div class="password-field">
+              <input
+                name="password"
+                type="password"
+                autocomplete="current-password"
+                required
+                minlength="8"
+                placeholder="Minimum 8 characters"
+              /><button type="button" data-password-toggle>Show</button>
+            </div></label
+          >
+          <div class="form-error" id="loginError" role="alert"></div>
+          <button class="primary-button full" type="submit">
+            Enter ReliveRealm <span>↗</span>
+          </button>
+        </form>
+        <p class="auth-switch">
+          New here? <a href="register.html">Create an account</a>
+        </p>
+        <div class="api-note">
+          <span>API READY</span>
+          <p>
+            When Phase 2 begins, this form will call
+            <code>POST /api/auth/login</code> and store only the short-lived
+            access token client-side. The refresh token remains an httpOnly
+            cookie.
+          </p>
+        </div>
+      </section>
+    </main>
+    <div class="toast" id="toast"></div>
+    <script type="module" src="js/auth.js"></script>
+  </body>
+</html>
