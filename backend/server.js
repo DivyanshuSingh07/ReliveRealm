@@ -17,15 +17,37 @@ const PORT = process.env.PORT || 5000;
 // Middleware
 // --------------------------------------------------
 
+// app.use(
+//   cors({
+//     origin: [
+//       "http://127.0.0.1:5500",
+//       "http://localhost:5500",
+//       process.env.FRONTEND_URL,
+//     ].filter(Boolean),
+//     credentials: true,
+//   }),
+// );
+
+
+const allowedOrigins = [
+  "http://127.0.0.1:5500",
+  "http://localhost:5500",
+  "https://relive-realm.vercel.app",
+  process.env.FRONTEND_URL,
+].filter(Boolean);
+
 app.use(
   cors({
-    origin: [
-      "http://127.0.0.1:5500",
-      "http://localhost:5500",
-      process.env.FRONTEND_URL,
-    ].filter(Boolean),
+    origin: (origin, callback) => {
+      if (!origin || allowedOrigins.includes(origin)) {
+        return callback(null, true);
+      }
+
+      console.error("CORS blocked origin:", origin);
+      return callback(new Error("Origin not allowed by CORS"));
+    },
     credentials: true,
-  }),
+  })
 );
 
 app.use(express.json());
