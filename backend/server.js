@@ -25,7 +25,7 @@ app.use(
       process.env.FRONTEND_URL,
     ].filter(Boolean),
     credentials: true,
-  })
+  }),
 );
 
 app.use(express.json());
@@ -37,10 +37,7 @@ app.use(cookieParser());
 // --------------------------------------------------
 
 connectDB().catch((error) => {
-  console.error(
-    "Initial database connection failed:",
-    error.message
-  );
+  console.error("Initial database connection failed:", error.message);
 });
 
 // --------------------------------------------------
@@ -75,10 +72,7 @@ app.get("/api/health", async (req, res) => {
       database: "connected",
     });
   } catch (error) {
-    console.error(
-      "Health check database error:",
-      error.message
-    );
+    console.error("Health check database error:", error.message);
 
     res.status(503).json({
       success: false,
@@ -119,15 +113,11 @@ app.use((err, req, res, next) => {
 
 if (require.main === module) {
   app.listen(PORT, () => {
-    console.log(
-      `ReliveRealm API running on http://localhost:${PORT}`
-    );
+    console.log(`ReliveRealm API running on http://localhost:${PORT}`);
   });
 }
 
 module.exports = app;
-
-
 
 /*
 require("dotenv").config();
